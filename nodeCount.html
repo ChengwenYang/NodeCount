@@ -1,0 +1,21 @@
+// this is the HTML file with span
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Node Count</title>
+</head>
+<body>
+
+<span id="nodeCount">Loading...</span>
+
+<script type="module">
+    fetch('https://faucet-api.koii.network/api/leaderboard/get-nodes-summary')
+        .then(response => response.json())
+        .then(data => document.getElementById('nodeCount').textContent = `Nodes: ${data.totalNumberOfActiveStakingKeys}`)
+        .catch(() => document.getElementById('nodeCount').textContent = 'Error loading node count');
+</script>
+
+</body>
+</html>
